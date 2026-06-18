@@ -22,6 +22,8 @@
   .form-label { font-size:13px; font-weight:600; color:#333; margin-bottom:6px; display:block; }
   .form-input { width:100%; padding:10px 12px; border:1px solid #ccc; border-radius:4px; font-size:14px; font-family:'Barlow',sans-serif; background:#fff; }
   .form-input:disabled { background:#f0f0f0; color:#999; }
+  .success-msg { display:none; background:#f7faf5; border:2px solid #5aba3a; border-radius:6px; padding:20px; text-align:center; margin-top:16px; }
+  .success-msg p { color:#1e3a14; font-weight:600; font-size:15px; margin:0; }
 
   .consent-box { margin:24px 0; }
   .checkbox-row { display:flex; align-items:flex-start; gap:12px; padding:16px; background:#f7faf5; border:2px solid #5aba3a; border-radius:6px; }
@@ -50,19 +52,19 @@
     <h3>Business Information</h3>
     <div class="form-row">
       <label class="form-label">Business Legal Name</label>
-      <input class="form-input" type="text" placeholder="Enter your business name"
+      <input class="form-input" type="text" placeholder="Enter your business name">
     </div>
     <div class="form-row">
       <label class="form-label">Owner / Contact Name</label>
-      <input class="form-input" type="text" placeholder="Enter your full name"
+      <input class="form-input" type="text" placeholder="Enter your full name">
     </div>
     <div class="form-row">
       <label class="form-label">Mobile Phone Number</label>
-      <input class="form-input" type="tel" placeholder="(XXX) XXX-XXXX"
+      <input class="form-input" type="tel" placeholder="(XXX) XXX-XXXX">
     </div>
     <div class="form-row">
       <label class="form-label">Email Address</label>
-      <input class="form-input" type="email" placeholder="you@example.com"
+      <input class="form-input" type="email" placeholder="you@example.com">
     </div>
   </div>
 
@@ -75,11 +77,15 @@
     </div>
   </div>
 
-  <button class="submit-btn">Submit Account Request</button>
+  <button class="submit-btn" onclick="handleSubmit()">Submit Account Request</button>
+
+  <div class="success-msg" id="success-msg">
+    <p>✅ Thank you! Your account request has been received. Our team will follow up with you shortly.</p>
+  </div>
 
   <div class="links-row">
-    <a href="https://sites.google.com/view/wastesource-locations/home/privacy-policy">Privacy Policy</a>
-    <a href="https://sites.google.com/view/wastesource-locations/home/terms-and-conditions">Terms &amp; Conditions</a>
+    <a href="https://reynathewastesource-blip.github.io/wastesource-signup/PrivacyPolicy.html">Privacy Policy</a>
+    <a href="https://reynathewastesource-blip.github.io/wastesource-signup/TermsAndConditions.html">Terms &amp; Conditions</a>
   </div>
 
   <div class="footer">
@@ -87,5 +93,16 @@
     Questions? Contact us at admin@thewastesource.com or (281) 877-2093.
   </div>
 </div>
+<script>
+function handleSubmit() {
+  var consent = document.getElementById('sms-consent');
+  if (!consent.checked) {
+    alert('Please check the SMS consent box before submitting.');
+    return;
+  }
+  document.querySelector('.submit-btn').style.display = 'none';
+  document.getElementById('success-msg').style.display = 'block';
+}
+</script>
 </body>
 </html>
